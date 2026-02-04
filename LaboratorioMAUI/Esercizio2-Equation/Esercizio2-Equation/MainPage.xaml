@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Esercizio2_Equation.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="25">
+
+            <Grid RowSpacing="15"
+                  ColumnSpacing="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="A:"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       VerticalOptions="Center" />
+
+                <Entry x:Name="EntA"
+                       Keyboard="Numeric"
+                       Grid.Row="0"
+                       Grid.Column="1" />
+
+ 
+                <Label Text="B:"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       VerticalOptions="Center" />
+
+                <Entry x:Name="EntB"
+                       Keyboard="Numeric"
+                       Grid.Row="1"
+                       Grid.Column="1" />
+
+                <Label Text="C:"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       VerticalOptions="Center" />
+
+                <Entry x:Name="EntC"
+                       Keyboard="Numeric"
+                       Grid.Row="2"
+                       Grid.Column="1" />
+
+            </Grid>
+
+            <Button
+                    Text="Calcola Radici"
+                    BackgroundColor="CornflowerBlue"
+                    TextColor="White"
+                    Clicked ="BtnRisultato"/>
+
+            <Label x:Name="LblRisultato"
+                   Text="Risultato..."
+                   HorizontalTextAlignment="Center"
+                   BackgroundColor="LightGray"
+                   Padding="10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Esempio.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20">
+
+            <Label
+                Text="Convertitore Franchi ↔ Euro"
+                FontSize="24"
+                HorizontalOptions="Center" />
+
+            <Entry
+                x:Name="InputFranchi"
+                Placeholder="Inserisci importo"
+                Keyboard="Numeric" />
+
+            <Button
+                Text="Converti in Euro"
+                Clicked="OnConverterClicked" />
+
+            <Button
+                Text="Euro → Franchi"
+                Clicked="OnConverterEFClicked" />
+
+            <Button 
+                Text="Reset"
+                Clicked="OnResetClicked"/>
+
+            <Label
+                x:Name="LblRisultato"
+                FontSize="18"
+                TextColor="DodgerBlue"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
