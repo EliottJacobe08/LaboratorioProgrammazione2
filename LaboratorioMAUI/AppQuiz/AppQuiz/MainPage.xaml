@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppQuiz.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+           
+            <Entry x:Name="NameEntry"
+                   Placeholder="Inserisci il tuo nome"
+                   FontSize="18" />
+
+      
+            <Label x:Name="ScoreLabel"
+                   Text="Punteggio: 0"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+       
+            <Label x:Name="QuestionTextLabel"
+                   FontSize="22"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+
+        
+            <Image x:Name="QuestionImage"
+                   HeightRequest="200"
+                   Aspect="AspectFit"/>
+
+         
+            <Label x:Name="HintLabel"
+                   TextColor="Gray"
+                   IsVisible="False"
+                   HorizontalTextAlignment="Center"/>
+
+       
+            <HorizontalStackLayout Spacing="20"
+                                   HorizontalOptions="Center">
+
+                <Button Text="Vero"
+                        Clicked="Button_Clicked"
+                        CommandParameter="true"
+                        WidthRequest="120"/>
+
+                <Button Text="Falso"
+                        Clicked="Button_Clicked"
+                        CommandParameter="false"
+                        WidthRequest="120"/>
+
+            </HorizontalStackLayout>
+
+            <Button Text="Hint"
+                    Clicked="Hint_Clicked"
+                    BackgroundColor="Orange"
+                    TextColor="White"/>
+
+            <Button Text="Ricomincia"
+                    Clicked="Restart_Clicked"
+                    BackgroundColor="Red"
+                    TextColor="White"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
