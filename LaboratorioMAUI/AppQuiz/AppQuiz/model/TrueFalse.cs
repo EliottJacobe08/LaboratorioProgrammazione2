@@ -10,9 +10,12 @@
             CorrectAnswer = correctAnswer;
         }
 
-        public override bool CheckAnswer(bool userAnswer)
+        public override bool CheckAnswer(object answer)
         {
-            return userAnswer == CorrectAnswer;
+            if (answer is bool userAnswer)
+                return userAnswer == CorrectAnswer;
+
+            return false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AppQuiz.Model;
+﻿using AppQuiz.model;
+using AppQuiz.Model;
 
 namespace AppQuiz
 {
@@ -52,6 +53,14 @@ namespace AppQuiz
                 "JavaScript può essere eseguito sia lato client che lato server (es. Node.js)."
             ));
 
+            _questions.Add(new OpenQuestion(
+                "Quanti anni a JS",
+                67,
+                "18",
+                "js.png",
+                "Non avrai aiuti hahah -5 godo"
+                ));
+
 
             ShowQuestion();
         }
@@ -61,11 +70,25 @@ namespace AppQuiz
             if (_currentIndex < _questions.Count)
             {
                 var current = _questions[_currentIndex];
+                if (current is OpenQuestion)
+                {
+                    Risposta.IsVisible = true;
+                    CheckAnswer.IsVisible = true;
+                    Vero.IsVisible = false;
+                    Falso.IsVisible = false;
+                }
+                else {
+                    Risposta.IsVisible = false;
+                    CheckAnswer.IsVisible = false;
+                    Vero.IsVisible = true;
+                    Falso.IsVisible = true;
+                }
 
                 QuestionTextLabel.Text = current.Text;
                 QuestionImage.Source = current.ImagePath;
                 HintLabel.IsVisible = false;
                 HintLabel.Text = current.Hint;
+                btnResult.IsVisible = false;
 
                 UpdateScoreLabel();
                 _hintUsed = false;
@@ -75,6 +98,7 @@ namespace AppQuiz
                 QuestionTextLabel.Text = "Quiz terminato!";
                 QuestionImage.Source = null;
                 HintLabel.IsVisible = false;
+                btnResult.IsVisible= true;
             }
         }
 
@@ -83,17 +107,31 @@ namespace AppQuiz
             if (_currentIndex >= _questions.Count)
                 return;
 
-            var btn = (Button)sender;
-            bool userAnswer = bool.Parse(btn.CommandParameter.ToString());
-
             var current = _questions[_currentIndex];
+            var btn = sender as Button;
 
-            if (current.CheckAnswer(userAnswer))
+            bool isCorrect = false;
+
+            if (current is TrueFalse)
+            {
+                if (btn?.CommandParameter is string param &&
+                    bool.TryParse(param, out bool userAnswer))
+                {
+                    isCorrect = current.CheckAnswer(userAnswer);
+                }
+            }
+            else if (current is OpenQuestion)
+            {
+                string userAnswer = Risposta.Text ?? "";
+                isCorrect = current.CheckAnswer(userAnswer);
+            }
+
+            if (isCorrect)
             {
                 int earnedPoints = current.Points;
 
                 if (_hintUsed)
-                    earnedPoints -= 5; // penalizzazione hint
+                    earnedPoints -= 5;
 
                 _score += earnedPoints;
             }
@@ -126,6 +164,15 @@ namespace AppQuiz
                 : NameEntry.Text;
 
             ScoreLabel.Text = $"{name} - Punteggio: {_score}";
+        }
+
+        private void btnResult_Clicked(object sender, EventArgs e)
+        {
+            onQuizFinished();
+        }
+        private async void onQuizFinished()
+        {
+            await Navigation.PushAsync(new ResultPage(_score));
         }
     }
 }

@@ -15,6 +15,7 @@
             Hint = hint;
         }
 
-        public abstract bool CheckAnswer(bool answer);
+        public abstract bool CheckAnswer(object answer);
+  
     }
 }
