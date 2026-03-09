@@ -54,9 +54,17 @@ namespace AppQuiz
             ));
 
             _questions.Add(new OpenQuestion(
-                "Quanti anni a JS",
+                "Quanti anni ha JS",
                 67,
                 "18",
+                "js.png",
+                "Non avrai aiuti hahah -5 godo"
+                ));
+
+            _questions.Add(new OpenQuestion(
+                "Quanta Aura ha Palucci",
+                67,
+                "Troppa",
                 "js.png",
                 "Non avrai aiuti hahah -5 godo"
                 ));
@@ -172,7 +180,10 @@ namespace AppQuiz
         }
         private async void onQuizFinished()
         {
-            await Navigation.PushAsync(new ResultPage(_score));
+            string name = string.IsNullOrWhiteSpace(NameEntry.Text)
+            ? "Giocatore"
+            : NameEntry.Text;
+            await Navigation.PushAsync(new ResultPage(_score, name));
         }
     }
 }

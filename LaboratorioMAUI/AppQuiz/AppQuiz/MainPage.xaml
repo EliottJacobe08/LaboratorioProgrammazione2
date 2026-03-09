@@ -51,7 +51,7 @@
                         CommandParameter="false"
                         WidthRequest="120"/>
                 <Entry x:Name="Risposta"
-                       Placeholder="Inserisci il tuo nome"
+                       Placeholder="..."
                        FontSize="18" 
                        IsVisible="False"/>
                 
