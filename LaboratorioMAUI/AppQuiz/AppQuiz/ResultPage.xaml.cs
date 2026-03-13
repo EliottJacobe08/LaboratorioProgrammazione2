@@ -8,7 +8,7 @@ public partial class ResultPage : ContentPage
     string _name;
 
     //percorso leggere e salvare TXT
-    private static readonly string _filePath = Path.Combine(FileSystem.AppDataDirectory, "^bestscore");
+    private static readonly string _filePath = Path.Combine(FileSystem.AppDataDirectory, "^bestscore"); 
     public ResultPage(int score, string name)
     {
 
@@ -34,23 +34,27 @@ public partial class ResultPage : ContentPage
 
     private int LoadBestScore(int score)
     {
-        if (!File.Exists(_filePath)) return 0;
+        if (!File.Exists(_filePath))
+            return 0;
 
         try
         {
-            //leggere contenuto file
-            string content = File.ReadAllText(_filePath);
-            int best;
-            if (int.TryParse(content, out best))
+            // Legge tutte le righe del file
+            string[] righe = File.ReadAllLines(_filePath);
+            int best = 0;
+
+            foreach (string riga in righe)
             {
-                return best;
-            }
-            else
-            {
-                DisplayAlert("Errore", "il file del punteggio", "Cancel");
-                return 0;
+                string[] parti = riga.Split(' ');
+
+                if (parti.Length >= 2 && int.TryParse(parti[1], out int punteggio))
+                {
+                    if (punteggio > best)
+                        best = punteggio;
+                }
             }
 
+            return best;
         }
         catch (Exception ex)
         {
@@ -67,20 +71,16 @@ public partial class ResultPage : ContentPage
         {
             try
             {
-                File.WriteAllText(_filePath,_name.ToString()+" "+score.ToString() + " "+ DateTime.Now.ToString("yyyy-MM-dd"));
-                DateTime now = DateTime.Now;
-                LblBest.Text = score.ToString();
+                
+                string nuovaRiga = $"{_name} {score} {DateTime.Now:yyyy-MM-dd}";
+                File.WriteAllText(_filePath, nuovaRiga);
 
-
-
-
+                LblBest.Text = nuovaRiga;
             }
             catch (Exception ex)
             {
-                DisplayAlert("errore", ex.Message, "Error");
+                DisplayAlert("Errore", ex.Message, "Error");
             }
         }
-
-
     }
 }

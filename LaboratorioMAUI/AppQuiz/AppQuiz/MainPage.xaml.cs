@@ -3,8 +3,10 @@ using AppQuiz.Model;
 
 namespace AppQuiz
 {
+    
     public partial class MainPage : ContentPage
     {
+        private static readonly string _filePath = Path.Combine(FileSystem.AppDataDirectory, "domande.txt");
         private List<QuestionBase> _questions = new();
         private int _currentIndex = 0;
         private int _score = 0;
@@ -14,62 +16,43 @@ namespace AppQuiz
         {
             InitializeComponent();
 
-            _questions.Add(new TrueFalse(
-                "Il C# è un linguaggio orientato agli oggetti?",
-                10,
-                true,
-                "c_uses.png",
-                "È sviluppato da Microsoft."
-            ));
+            if (File.Exists(_filePath))
+            {
+                string[] righe = File.ReadAllLines(_filePath);
 
-            _questions.Add(new TrueFalse(
-                "Python è un linguaggio compilato?",
-                15,
-                false,
-                "python.png",
-                "È interpretato."
-            ));
-            _questions.Add(new TrueFalse(
-                "HTML è un linguaggio di programmazione?",
-                10,
-                false,
-                "html.png",
-                "HTML è un linguaggio di markup."
-            ));
+                foreach (string riga in righe)
+                {
+                    string[] dati = riga.Split(';');
 
-            _questions.Add(new TrueFalse(
-                "CSS serve per definire lo stile e il layout delle pagine web?",
-                10,
-                true,
-                "css.png",
-                "Permette di gestire colori, margini, font e layout."
-            ));
+                    if (dati[0] == "TF")
+                    {
+                       if (int.TryParse(dati[2], out int punti) && bool.TryParse(dati[3], out bool risposta))
+                        {
+                            _questions.Add(new TrueFalse(
+                                dati[1],
+                                punti,
+                                risposta,
+                                dati[4],
+                                dati[5]
+                            ));
+                        }
+                    } else if (dati[0] == "OPEN")
+                    {
+                        if (int.TryParse(dati[2], out int punti))
+                        {
+                            _questions.Add(new OpenQuestion(
+                                dati[1],
+                                punti,
+                                dati[3],
+                                dati[4],
+                                dati[5]
+                                ));
+                        }
+                    }
+                    else { continue; }
 
-            _questions.Add(new TrueFalse(
-                "JavaScript viene eseguito solo lato server?",
-                15,
-                false,
-                "js.png",
-                "JavaScript può essere eseguito sia lato client che lato server (es. Node.js)."
-            ));
-
-            _questions.Add(new OpenQuestion(
-                "Quanti anni ha JS",
-                67,
-                "18",
-                "js.png",
-                "Non avrai aiuti hahah -5 godo"
-                ));
-
-            _questions.Add(new OpenQuestion(
-                "Quanta Aura ha Palucci",
-                67,
-                "Troppa",
-                "js.png",
-                "Non avrai aiuti hahah -5 godo"
-                ));
-
-
+                }
+            }
             ShowQuestion();
         }
 
