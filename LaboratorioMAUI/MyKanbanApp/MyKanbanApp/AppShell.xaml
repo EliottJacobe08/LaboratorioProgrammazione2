@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MyKanbanApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:MyKanbanApp.Pages"
+
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="True">
+
+    <!-- Stile barra navigazione -->
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.ForegroundColor" Value="Black"/>
+            <Setter Property="Shell.TitleColor" Value="Black"/>
+            <Setter Property="Shell.UnselectedColor" Value="Gray"/>
+        </Style>
+    </Shell.Resources>
+
+    <!-- Barra navigazione -->
+    <TabBar>
+
+        <ShellContent
+            Title="Home"
+            Route="MainPage"
+            ContentTemplate="{DataTemplate pages:MainPage}" />
+
+        <ShellContent
+            Title="Kanban"
+            Route="KanbanPage"
+            ContentTemplate="{DataTemplate pages:KanbanPage}" />
+
+        <ShellContent
+            Title="Activity"
+            Route="ActivityPage"
+            ContentTemplate="{DataTemplate pages:ActivityPage}" />
+
+        <ShellContent
+            Title="Deadline"
+            Route="DeadlinePage"
+            ContentTemplate="{DataTemplate pages:DeadlinePage}" />
+
+        <ShellContent
+            Title="User"
+            Route="UserPage"
+            ContentTemplate="{DataTemplate pages:UserPage}" />
+
+    </TabBar>
+
+</Shell>

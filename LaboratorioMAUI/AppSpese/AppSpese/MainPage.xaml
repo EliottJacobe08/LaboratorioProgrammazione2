@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSpese.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label Text="LE MIE SPESE"
+                   TextColor="Blue"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"></Label>
+            
+            <Entry x:Name="EntNomeLista"
+                   Text=""
+                   Placeholder="Nome lista"
+                   FontSize="12"
+                   FontAttributes="None"
+                   TextColor="Gray"></Entry>
+
+            <Entry x:Name="EntDescrizione"
+                   Text=""
+                   Placeholder="descrizione spesa"
+                   FontAttributes="None"
+                   FontSize="12"
+                   TextColor="Gray"></Entry>
+
+            <Entry x:Name="EntImporto"
+                   Text=""
+                   Placeholder="importo"
+                   FontAttributes="None"
+                   FontSize="12"
+                   TextColor="Gray"></Entry>
+
+            <Entry x:Name="Entqty"
+                   Text=""
+                   Placeholder="quantità"
+                   FontAttributes="None"
+                   FontSize="12"
+                   TextColor="Gray"
+                   IsVisible="True"></Entry>
+
+
+            <Button x:Name="BtnSalva"
+                    Text="Salva Spesa"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    CornerRadius="12"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    Clicked="OnBtnSalvaClicked"></Button>
+            
+            <Button x:Name="BtnVediSpese"
+                    Text="Vedi Spese"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="12"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    Clicked="OnVediClicked"></Button>
+
+            <Label Text="Liste salvate:"
+                   TextColor="Gray"
+                   FontSize="8"></Label>
+
+            <Editor x:Name="EdiShow"
+                    BackgroundColor="LightGray"
+                    FontSize="12"
+                    HeightRequest="300"
+                    IsReadOnly="True"></Editor>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36119.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloList", "HelloList\HelloList.csproj", "{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41232B12-60D7-48C3-9CE5-A4E8D2D5B4D1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {030E0DFA-BE53-404C-8977-9C250F9298A6}
+	EndGlobalSection
+EndGlobal

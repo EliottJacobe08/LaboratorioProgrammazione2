@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDiario.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+           Spacing="20"
+           Padding="20">
+
+            <Label Text="My Diary"
+                  FontSize="24"
+                  HorizontalOptions="Center"
+                  FontAttributes="Bold">
+            </Label>
+
+            <Entry x:Name="entTitolo"
+                   Placeholder="inserisci titolo">
+            </Entry>
+
+            <Entry x:Name="entTesto"
+                   Placeholder="inserisci testo">
+            </Entry>
+
+            <Button x:Name="btnSalva" 
+                    Text="SalvaNota"
+                    BackgroundColor="Green"
+                    TextColor="Wheat"
+                    Clicked="OnSalvaClicked">
+            </Button>
+
+            <Button x:Name="btnLeggi"
+                    Text="Leggi note"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Clicked="OnLeggiClicked">
+            </Button>
+            
+            <BoxView HeightRequest="1" Color="Gray"></BoxView>
+
+            <Label Text="Note Salvate"
+                   FontAttributes="Italic">
+            </Label>
+            <Editor x:Name="editDisplay"
+                    HeightRequest="300"
+                    IsReadOnly="True"
+                    BackgroundColor="AliceBlue">
+            </Editor>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

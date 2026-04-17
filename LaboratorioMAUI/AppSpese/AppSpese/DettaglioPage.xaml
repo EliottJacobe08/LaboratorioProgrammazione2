@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSpese.DettaglioPage"
+             Title="DettaglioPage">
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+
+        <Label Text="DETTAGLIO SPESE"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="Blue"
+               HorizontalOptions="Center"></Label>
+
+        <Label x:Name="lblMese"
+               TextColor="Blue"
+               HorizontalOptions="Center"
+               FontSize="12"></Label>
+
+        <Editor x:Name="EdiSpese"
+                Placeholder="listaspese"
+                IsReadOnly="True"
+                AutoSize="TextChanges"
+                BackgroundColor="LightGray"
+                TextColor="Black"></Editor>
+
+        <Button x:Name="BtnB" 
+                Text="Torna indietro"
+                TextColor="White"
+                BackgroundColor="Blue"
+                Clicked="OnBtnBClicked"></Button>   
+
+    </VerticalStackLayout>
+</ContentPage>
